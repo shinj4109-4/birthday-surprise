@@ -677,6 +677,37 @@
     animation-delay: 7s;
 }
 
+.tap-instruction {
+    width: 100%;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    position: relative;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    animation: gentlePulse 1.8s ease-in-out infinite;
+}
+
+.tap-instruction.hide {
+    animation: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes gentlePulse {
+    0%, 100% {
+        opacity: 0.65;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
 
 .envelope {
     position: relative;
@@ -1056,6 +1087,10 @@
 
 <div class="envelope-container">
 
+    <div class="tap-instruction">
+        Tap the envelope 💌
+    </div>
+
     <div
         class="envelope"
         onclick="openLetter()">
@@ -1093,12 +1128,15 @@
 <script>
 
     function openLetter() {
+    const envelope = document.querySelector(".envelope");
+    const instruction = document.querySelector(".tap-instruction");
 
-        document
-            .querySelector(".envelope")
-            .classList.add("open");
+    envelope.classList.add("open");
 
+    if (instruction) {
+        instruction.classList.add("hide");
     }
+}
 
 </script>
 
