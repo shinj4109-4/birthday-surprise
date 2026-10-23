@@ -726,7 +726,13 @@
 
     cursor: pointer;
 
-    overflow: visible;
+overflow: visible;
+
+transform-origin: center center;
+
+transition:
+    transform 0.8s ease,
+    box-shadow 0.8s ease;
 }
 
 .envelope-side-left {
@@ -911,6 +917,12 @@
 /* =========================
    OPEN ANIMATION
 ========================= */
+
+.envelope.open {
+    transform: scale(1.35);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45);
+}
 
 .envelope.open .envelope-flap {
     transform: rotateX(180deg);
