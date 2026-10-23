@@ -589,50 +589,35 @@
 }
 
 
+/* =========================
+   GLOSSY 3D RED HEARTS
+========================= */
+
 .heart {
     position: absolute;
     width: 55px;
     height: 55px;
-    background: #4fa36a;
-    left: 68%;
+
+    left: 78%;
     top: 55%;
-    transform: rotate(-45deg);
-    filter: drop-shadow(8px 8px 0px #2f7048);
-}
 
-.heart::before,
-.heart::after {
-    content: "";
-    position: absolute;
-    width: 55px;
-    height: 55px;
-    background: #4fa36a;
-    border-radius: 50%;
+    z-index: 15;
+    pointer-events: none;
 }
-
-.heart::before {
-    top: -30px;
-    left: 0;
-}
-
-.heart::after {
-    top: 0;
-    left: 30px;
-}
-
 
 .heart1 {
-    animation: heartTrail 3s linear infinite;
+    animation: heartTrail 3.5s linear infinite;
+animation-delay: 0s;
 }
 
 .heart2 {
-    animation: heartTrail 3s linear infinite;
-    animation-delay: 1.5s;
+    animation: heartTrail 3.5s linear infinite;
+    animation-delay: 1.2s;
 }
 
 .heart3 {
-    animation: heartTrail 3s linear infinite;
-    animation-delay: 3s;
+    animation: heartTrail 3.5s linear infinite;
+    animation-delay: 2.4s;
 }
 
 
@@ -669,6 +654,11 @@
 
     transform: translate(-50%, -50%);
 
+
+transition:
+    left 0.9s ease,
+    transform 0.9s ease;
+
     z-index: 1000;
 
     opacity: 0;
@@ -676,6 +666,8 @@
     animation: envelopeAppear 2s ease forwards;
     animation-delay: 7s;
 }
+
+
 
 .tap-instruction {
     width: 100%;
@@ -709,6 +701,10 @@
     }
 }
 
+.envelope-container.move-to-center {
+    left: 50%;
+}
+
 .envelope {
     position: relative;
 
@@ -726,7 +722,13 @@
 
     cursor: pointer;
 
-    overflow: visible;
+overflow: visible;
+
+transform-origin: center center;
+
+transition:
+    transform 0.8s ease,
+    box-shadow 0.8s ease;
 }
 
 .envelope-side-left {
@@ -777,12 +779,21 @@
 
     z-index: 5;
 
-    transform: translateY(0);
+opacity: 0;
+visibility: hidden;
+
+    transform: translateY(100px);
 
     transition:
         transform 0.8s ease-out;
 }
 
+.envelope.letter-out .letter {
+    transform: translateY(-120px);
+    opacity: 1;
+    visibility: visible;
+    z-index: 11;
+}
 
 .letter h2 {
     font-family: Georgia, serif;
@@ -904,7 +915,7 @@
     transform-origin: top center;
 
     transition:
-        transform 0.8s ease;
+        transform 1.1s ease;
 }
 
 
@@ -912,15 +923,24 @@
    OPEN ANIMATION
 ========================= */
 
+.envelope.open {
+    transform: scale(1.35);
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
 .envelope.open .envelope-flap {
     transform: rotateX(180deg);
 }
 
 .envelope.open .letter {
-    transform: translateY(-220px);
+    transform: translateY(0);
     z-index: 11;
 }
 
+.envelope.letter-out .letter {
+    transform: translateY(-220px);
+}
 
 /* =========================
    ENVELOPE ENTRANCE
@@ -949,9 +969,161 @@
 
 <body>
 
-    <div class="heart heart1"></div>
-    <div class="heart heart2"></div>
-    <div class="heart heart3"></div>
+    <!-- 3D HEART 1 -->
+<div class="heart heart1">
+    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="heartGradient1" cx="35%" cy="25%">
+                <stop offset="0%" stop-color="#ffb3b3"/>
+                <stop offset="18%" stop-color="#ff4d4d"/>
+                <stop offset="55%" stop-color="#e60000"/>
+                <stop offset="82%" stop-color="#a80000"/>
+                <stop offset="100%" stop-color="#650000"/>
+            </radialGradient>
+
+            <filter id="heartShadow1">
+                <feDropShadow
+                    dx="5"
+                    dy="8"
+                    stdDeviation="7"
+                    flood-color="#400000"
+                    flood-opacity="0.45"/>
+            </filter>
+        </defs>
+
+        <path
+            d="M100 165
+               C90 155 20 105 20 55
+               C20 20 65 5 100 45
+               C135 5 180 20 180 55
+               C180 105 110 155 100 165Z"
+            fill="url(#heartGradient1)"
+            filter="url(#heartShadow1)"/>
+
+        <!-- glossy reflection -->
+        <ellipse
+            cx="65"
+            cy="48"
+            rx="20"
+            ry="10"
+            fill="white"
+            opacity="0.55"
+            transform="rotate(-25 65 48)"/>
+
+        <ellipse
+            cx="55"
+            cy="65"
+            rx="8"
+            ry="4"
+            fill="white"
+            opacity="0.3"
+            transform="rotate(-25 55 65)"/>
+    </svg>
+</div>
+
+
+<!-- 3D HEART 2 -->
+<div class="heart heart2">
+    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="heartGradient2" cx="35%" cy="25%">
+                <stop offset="0%" stop-color="#ffb3b3"/>
+                <stop offset="18%" stop-color="#ff4d4d"/>
+                <stop offset="55%" stop-color="#e60000"/>
+                <stop offset="82%" stop-color="#a80000"/>
+                <stop offset="100%" stop-color="#650000"/>
+            </radialGradient>
+
+            <filter id="heartShadow2">
+                <feDropShadow
+                    dx="5"
+                    dy="8"
+                    stdDeviation="7"
+                    flood-color="#400000"
+                    flood-opacity="0.45"/>
+            </filter>
+        </defs>
+
+        <path
+            d="M100 165
+               C90 155 20 105 20 55
+               C20 20 65 5 100 45
+               C135 5 180 20 180 55
+               C180 105 110 155 100 165Z"
+            fill="url(#heartGradient2)"
+            filter="url(#heartShadow2)"/>
+
+        <ellipse
+            cx="65"
+            cy="48"
+            rx="20"
+            ry="10"
+            fill="white"
+            opacity="0.55"
+            transform="rotate(-25 65 48)"/>
+
+        <ellipse
+            cx="55"
+            cy="65"
+            rx="8"
+            ry="4"
+            fill="white"
+            opacity="0.3"
+            transform="rotate(-25 55 65)"/>
+    </svg>
+</div>
+
+
+<!-- 3D HEART 3 -->
+<div class="heart heart3">
+    <svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="heartGradient3" cx="35%" cy="25%">
+                <stop offset="0%" stop-color="#ffb3b3"/>
+                <stop offset="18%" stop-color="#ff4d4d"/>
+                <stop offset="55%" stop-color="#e60000"/>
+                <stop offset="82%" stop-color="#a80000"/>
+                <stop offset="100%" stop-color="#650000"/>
+            </radialGradient>
+
+            <filter id="heartShadow3">
+                <feDropShadow
+                    dx="5"
+                    dy="8"
+                    stdDeviation="7"
+                    flood-color="#400000"
+                    flood-opacity="0.45"/>
+            </filter>
+        </defs>
+
+        <path
+            d="M100 165
+               C90 155 20 105 20 55
+               C20 20 65 5 100 45
+               C135 5 180 20 180 55
+               C180 105 110 155 100 165Z"
+            fill="url(#heartGradient3)"
+            filter="url(#heartShadow3)"/>
+
+        <ellipse
+            cx="65"
+            cy="48"
+            rx="20"
+            ry="10"
+            fill="white"
+            opacity="0.55"
+            transform="rotate(-25 65 48)"/>
+
+        <ellipse
+            cx="55"
+            cy="65"
+            rx="8"
+            ry="4"
+            fill="white"
+            opacity="0.3"
+            transform="rotate(-25 55 65)"/>
+    </svg>
+</div>
 
     <!-- the rest of your webpage -->
 
@@ -1127,15 +1299,30 @@
 
 <script>
 
-    function openLetter() {
+   function openLetter() {
     const envelope = document.querySelector(".envelope");
+    const container = document.querySelector(".envelope-container");
     const instruction = document.querySelector(".tap-instruction");
-
-    envelope.classList.add("open");
 
     if (instruction) {
         instruction.classList.add("hide");
     }
+
+    // Move envelope to center
+    container.classList.add("move-to-center");
+
+    // Wait for the envelope to reach the center
+    setTimeout(() => {
+
+        // Open the flap first
+        envelope.classList.add("open");
+
+        // Let the flap open before the letter comes out
+        setTimeout(() => {
+            envelope.classList.add("letter-out");
+        }, 300);
+
+    }, 900);
 }
 
 </script>
