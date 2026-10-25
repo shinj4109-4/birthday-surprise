@@ -57,17 +57,15 @@
 
      .bouquet {
     position: absolute;
-    
-    width: 500px;
-    height: 500px;
-    
+    width: 420px;
+    height: 420px;
+
     left: 50%;
-    bottom: 2%;
-    
+    bottom: 4%;
+
     transform: translateX(-50%);
-    
     z-index: 1;
-    
+
     animation: bouquetRise 1.5s ease-out forwards;
 }
 
@@ -84,50 +82,48 @@
 }
 
 
-    /* =========================
-   LILY OF THE VALLEY
+ /* =========================
+   LILY OF THE VALLEY STEMS
 ========================= */
 
 .lily-stem {
     position: absolute;
-    width: 5px;
-    height: 220px;
+    width: 4px;
+    height: 350px;
+
     background: linear-gradient(
         to right,
         #285c3d,
         #5f9b68,
         #285c3d
     );
+
     bottom: 70px;
-    left: 50%;
+    left: 250px;
+
     border-radius: 10px;
     transform-origin: bottom center;
+    z-index: 4;
 }
 
-/* Individual stems */
-
-.lily-stem.stem1 {
-    transform: rotate(-22deg);
+.lily-stem.stem-left {
+    transform: rotate(-20deg);
 }
 
-.lily-stem.stem2 {
-    transform: rotate(-8deg);
+.lily-stem.stem-center {
+    transform: rotate(0deg);
 }
 
-.lily-stem.stem3 {
-    transform: rotate(8deg);
-}
-
-.lily-stem.stem4 {
-    transform: rotate(22deg);
+.lily-stem.stem-right {
+    transform: rotate(20deg);
 }
 
 
 /* =========================
-   LILY BELLS
+   LILY OF THE VALLEY FLOWERS
 ========================= */
 
-.bell {
+.lily-flower {
     position: absolute;
 
     width: 24px;
@@ -144,12 +140,12 @@
     box-shadow:
         0 3px 6px rgba(0, 0, 0, 0.18);
 
-    transform: rotate(90deg);
+    z-index: 6;
 }
 
-/* Small opening underneath each bell */
+/* Small opening underneath */
 
-.bell::after {
+.lily-flower::after {
     content: "";
 
     position: absolute;
@@ -166,33 +162,71 @@
 }
 
 
-/* Bell positions */
-
-.bell1 {
-    top: 35px;
-    left: -5px;
+/* LEFT STEM FLOWERS */
+.fl-l1 {
+    top: 105px;
+    left: 118px;
 }
 
-.bell2 {
-    top: 65px;
-    left: 2px;
+.fl-l2 {
+    top: 140px;
+    left: 132px;
+    transform: scale(0.9);
 }
 
-.bell3 {
-    top: 95px;
-    left: -6px;
+.fl-l3 {
+    top: 175px;
+    left: 145px;
+    transform: scale(0.82);
 }
 
-.bell4 {
-    top: 125px;
-    left: 3px;
+.fl-l4 {
+    top: 210px;
+    left: 158px;
+    transform: scale(0.72);
 }
 
-.bell5 {
-    top: 155px;
-    left: -5px;
+/* CENTER STEM FLOWERS */
+.fl-c1 {
+    top: 105px;
+    left: 222px;
 }
 
+.fl-c2 {
+    top: 140px;
+    left: 250px;
+    transform: scale(0.92);
+}
+
+.fl-c3 {
+    top: 175px;
+    left: 222px;
+    transform: scale(0.82);
+}
+
+.fl-c4 {
+    top: 210px;
+    left: 250px;
+    transform: scale(0.72);
+}
+
+/* RIGHT STEM FLOWERS */
+.fl-r1 {
+    top: 110px;
+    left: 354px;
+}
+
+.fl-r2 {
+    top: 150px;
+    left: 340px;
+    transform: scale(0.9);
+}
+
+.fl-r3 {
+    top: 190px;
+    left: 326px;
+    transform: scale(0.8);
+}
 
 /* =========================
    LILY LEAVES
@@ -216,24 +250,23 @@
     bottom: 55px;
 }
 
-.leaf1 {
+.leaf-1 {
     left: 165px;
     bottom: 55px;
     transform: rotate(-25deg);
 }
 
-.leaf2 {
+.leaf-2 {
     left: 215px;
     bottom: 55px;
     transform: rotate(5deg);
 }
 
-.leaf3 {
+.leaf-3 {
     left: 265px;
     bottom: 55px;
     transform: rotate(25deg);
 }
-
 
         /* =========================
            WRAPPING PAPER
@@ -959,6 +992,13 @@ visibility: hidden;
     }
 }
 
+.bouquet-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
 </style>
 
 </head>
@@ -1146,55 +1186,10 @@ visibility: hidden;
 
 <div class="bouquet">
     
-    <!-- LEAVES -->
-    
-    <div class="lily-leaf leaf-1"></div>
-    <div class="lily-leaf leaf-2"></div>
-    <div class="lily-leaf leaf-3"></div>
-    
-    <!-- CURVED STEMS -->
-    
-    <div class="lily-stem stem-left"></div>
-    <div class="lily-stem stem-center"></div>
-    <div class="lily-stem stem-right"></div>
-    
-    <!-- BOTTOM STEMS -->
-    
-    <div class="stem-bottoms">
-        <div class="b-stem bs-1"></div>
-        <div class="b-stem bs-2"></div>
-        <div class="b-stem bs-3"></div>
-    </div>
-    
-    <!-- LEFT FLOWERS -->
-    
-    <div class="lily-flower fl-l1"></div>
-    <div class="lily-flower fl-l2"></div>
-    <div class="lily-flower fl-l3"></div>
-    <div class="lily-flower fl-l4"></div>
-    
-    <!-- CENTER FLOWERS -->
-    
-    <div class="lily-flower fl-c1"></div>
-    <div class="lily-flower fl-c2"></div>
-    <div class="lily-flower fl-c3"></div>
-    <div class="lily-flower fl-c4"></div>
-    
-    <!-- RIGHT FLOWERS -->
-    
-    <div class="lily-flower fl-r1"></div>
-    <div class="lily-flower fl-r2"></div>
-    <div class="lily-flower fl-r3"></div>
-    
-    <!-- RIBBON BOW -->
-    
-    <div class="ribbon-bow">
-        <div class="loop loop-l"></div>
-        <div class="knot"></div>
-        <div class="loop loop-r"></div>
-        <div class="tail tail-l"></div>
-        <div class="tail tail-r"></div>
-    </div>
+   <img
+    src="lily-bouquet.png"
+    alt="Lily of the valley bouquet"
+    class="bouquet-photo">
     
 </div>
 
@@ -1277,7 +1272,6 @@ visibility: hidden;
 <script>
 
 
-}
 
 </script>
 
